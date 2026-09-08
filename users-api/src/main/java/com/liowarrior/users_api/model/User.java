@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 //@Entity - Habla con spring y le dice que va a mapear una BD
 @Entity
 //@Table - Especifica el nombre de la tabla
-@Table(name="Users")
+@Table(name="users")
 public class User {
 
     //@Id - Marca la llave primaria
@@ -31,8 +31,51 @@ public class User {
     //@Enumerated - Dice a JPA que esto es un ENUM y que lo guarde como texto
     @Enumerated(EnumType.STRING)
     @Column(name = "user_role")
-    private userRole userRole;
+    private UserRole userRole;
 
+    //Constructor vacio que JPA necesita para crear instancias internamente
+    public User() {
+    }
 
+    //Getter y setters: Escribir y leer cada campo
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
 }
 
