@@ -1,4 +1,4 @@
-package com.liowarrior.users_api;
+package com.liowarrior.users_api.service;
 
 import com.liowarrior.users_api.model.User;
 import com.liowarrior.users_api.repository.UserRepository;
