@@ -20,7 +20,7 @@ public class User {
     private String userName;
 
     @Column(name = "last_name", nullable = false, length = 50)
-    private String lasName;
+    private String lastName;
 
     @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
@@ -53,8 +53,8 @@ public class User {
         this.userName = userName;
     }
 
-    public String getLasName() {return lasName;}
-    public void setLasName(String lasName) {this.lasName = lasName;}
+    public String getLastName() {return lastName;}
+    public void setLastName(String lastName) {this.lastName = lastName;}
 
     public String getEmail() {
         return email;
