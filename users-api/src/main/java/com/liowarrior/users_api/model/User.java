@@ -19,8 +19,14 @@ public class User {
     @Column(name = "user_name", nullable = false, length = 50)
     private String userName;
 
+    @Column(name = "last_name", nullable = false, length = 50)
+    private String lasName;
+
     @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
+
+    @Column(name = "phone_number", nullable = false, length = 15)
+    private String phoneNumber;
 
     @Column(name = "password_hash", nullable = false, length = 255)
     private String passwordHash;
@@ -38,31 +44,31 @@ public class User {
     public Integer getIdUser() {
         return idUser;
     }
-
     public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
+    public String getUserName() {return userName;}
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
+    public String getLasName() {return lasName;}
+    public void setLasName(String lasName) {this.lasName = lasName;}
+
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getPhoneNumber() {return phoneNumber;}
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
+
     public String getPasswordHash() {
         return passwordHash;
     }
-
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
@@ -70,7 +76,6 @@ public class User {
     public UserRole getUserRole() {
         return userRole;
     }
-
     public void setUserRole(UserRole userRole) {
         this.userRole = userRole;
     }
