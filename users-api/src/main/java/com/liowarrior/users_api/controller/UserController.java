@@ -18,6 +18,8 @@ import java.util.Optional;
 
 //@RequestMapping define el prefijo de todo los endpoints de esta clase
 @RequestMapping("/api/users")
+//Peticiones exclusivos de projecto Angular (localhost:4200 por defecto)
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     private final UserService userService;
