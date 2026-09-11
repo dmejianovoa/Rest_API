@@ -3,10 +3,12 @@ package com.liowarrior.users_api.service;
 import com.liowarrior.users_api.model.User;
 import com.liowarrior.users_api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 
 //@Service marca esta clase como componente de logica de negocio
 //Spring - Administración e inyeccion si es necesario
@@ -14,13 +16,15 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-
+    private final  PasswordEncoder passwordEncoder;
+    //declaramos PasswordEncoder para contraseñas en forma hash
     //Inyecccion de dependencias por constructor: Spring nos entrega automaticamente
     //La instancia del UserRepository, no la creamos con "new"
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     //Devuelve todos los usuarios
@@ -40,6 +44,11 @@ public class UserService {
             //Regla de negocio: Email duplicado no permitido
             throw new IllegalArgumentException("Ya existe un usuario con ese email");
         }
+
+        //Hashear la contraseña antes de guardar en la base de datos
+        String hashedPassword = passwordEncoder.encode(user.getPasswordHash());
+        user.setPasswordHash(hashedPassword);
+
         return userRepository.save(user);
     }
 
