@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+### IDEA ###
+.application.properties
+**/application.properties
