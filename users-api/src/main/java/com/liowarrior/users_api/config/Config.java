@@ -28,8 +28,8 @@ public class Config {
                 //Peticiones explicitas
                 .authorizeHttpRequests(auth -> auth
                         // Autorizacion sin Login
-                        .requestMatchers("/api/**").permitAll()
-                        //Por ahora, todos los endpoints de /api/** quedan abiertos
+                        //Por ahora, todos los endpoints de "/api/users", "/api/users/**" quedan abierto
+                        .requestMatchers("/api/users", "/api/users/**").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();
