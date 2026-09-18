@@ -33,8 +33,10 @@ public class UserService {
     }
 
     //Duelve usuario por ID
-    public Optional<User> getUserById(Integer id) {
-        return userRepository.findById(id);
+    public User getUserById(Integer id) {
+        return userRepository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con el numero de id:" + id));
+
     }
 
     //Crear un usuario, validar que los datos no esten repetidos

@@ -39,11 +39,13 @@ public class UserController {
 
     //GET /api/users/{id} -> busca usuario por id
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
-        Optional<User> user = userService.getUserById(id);
-        //Si existe, responde 200 con usuario - si no muestra error 404 not found
-        return user.map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<?> getUserById(@PathVariable Integer id) {
+        try {
+            User user = userService.getUserById(id);
+            return ResponseEntity.ok(user);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
     // POST /api/users -> crear un nuevo usuario
