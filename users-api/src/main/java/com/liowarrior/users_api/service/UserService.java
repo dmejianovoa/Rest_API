@@ -60,22 +60,22 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado con el numero de id: " + id));
 
         //Actualizar solo datos editables
-        if (user.getUserName() != null) {
+        if (userDetails.getUserName() != null) {
             user.setUserName(userDetails.getUserName());
         }
-        if (user.getLastName() != null) {
+        if (userDetails.getLastName() != null) {
             user.setLastName(userDetails.getLastName());
         }
-        if (user.getEmail() != null) {
+        if (userDetails.getEmail() != null) {
             user.setEmail(userDetails.getEmail());
         }
-        if (user.getPhoneNumber() != null) {
+        if (userDetails.getPhoneNumber() != null) {
             user.setPhoneNumber(userDetails.getPhoneNumber());
         }
-        if (user.getUserRole() != null) {
+        if (userDetails.getUserRole() != null) {
             user.setUserRole(userDetails.getUserRole());
         }
-        if (user.getPasswordHash() != null) {
+        if (userDetails.getPasswordHash() != null) {
             //Solo si se realiza proceso de contraseña nueva / se hashea antes de guardar
             user.setPasswordHash(passwordEncoder.encode(userDetails.getPasswordHash()));
         }
